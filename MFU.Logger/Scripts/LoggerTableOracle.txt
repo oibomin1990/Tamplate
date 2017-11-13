@@ -1,0 +1,28 @@
+﻿ALTER SESSION SET CURRENT_SCHEMA = MFUTemplateTest;
+ 
+DROP TABLE dbo.Logger
+GO
+
+CREATE TABLE Logger(
+	ID Number(10)  NOT NULL,
+	LogMessage [nvarchar](max) NULL,
+	LogLevel Nvarchar2(50) NULL,
+	ModifiedDate Timestamp(3) DEFAULT (systimestamp) NULL  ,
+ CONSTRAINT PK_Logger PRIMARY KEY 
+(
+	ID 
+) 
+);
+
+-- Generate ID using sequence and trigger
+CREATE SEQUENCE Logger_seq START WITH 1 INCREMENT BY 1;
+
+CREATE OR REPLACE TRIGGER Logger_seq_tr
+ BEFORE INSERT ON Logger FOR EACH ROW
+ WHEN (NEW.ID IS NULL)
+BEGIN
+ SELECT Logger_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+/ TEXTIMAGE_ON PRIMARY
+
+GO

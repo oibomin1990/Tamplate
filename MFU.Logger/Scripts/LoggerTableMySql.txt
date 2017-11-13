@@ -1,0 +1,17 @@
+﻿USE `MFUTemplateTest`;
+ 
+DROP TABLE `dbo`.`Logger`
+GO
+ 
+CREATE TABLE Logger(
+	`ID` int AUTO_INCREMENT NOT NULL,
+	`LogMessage` Longtext NULL,
+	`LogLevel` nvarchar(50) NULL,
+	`ModifiedDate` datetime(3) NULL CONSTRAINT [DF_Logger_ModifiedDate]  DEFAULT (now()),
+ CONSTRAINT `PK_Logger` PRIMARY KEY 
+(
+	`ID` ASC
+) 
+); TEXTIMAGE_ON `PRIMARY`
+
+GO

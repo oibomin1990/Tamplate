@@ -1,0 +1,63 @@
+﻿USE [MFUTemplate]
+GO
+/****** Object:  Table [dbo].[DocumentCategory]    Script Date: 9/5/2017 2:19:58 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DocumentCategory](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[Description] [nvarchar](max) NULL,
+	[CreatedDate] [datetime] NULL CONSTRAINT [DF_DocumentCategory_CreatedDate]  DEFAULT (getdate()),
+	[ModifiedDate] [datetime] NULL CONSTRAINT [DF_DocumentCategory_ModifiedDate]  DEFAULT (getdate()),
+ CONSTRAINT [PK_DocumentCategory] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Logger]    Script Date: 9/5/2017 2:19:58 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Logger](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[LogMessage] [nvarchar](max) NULL,
+	[LogLevel] [nvarchar](50) NULL,
+	[ModifiedDate] [datetime] NULL CONSTRAINT [DF_Logger_ModifiedDate]  DEFAULT (getdate()),
+ CONSTRAINT [PK_Logger] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET IDENTITY_INSERT [dbo].[DocumentCategory] ON 
+
+GO
+INSERT [dbo].[DocumentCategory] ([Id], [Name], [Description], [CreatedDate], [ModifiedDate]) VALUES (1, N'เอกสารราชการ', N'เอกสารที่เกี่ยวข้องกับพระราชบัญญัติ พระราชกฤษฎีกา ระเบียบ ข้อบังคับ ประกาศต่างๆ', CAST(N'2017-09-05 02:00:41.233' AS DateTime), CAST(N'2017-09-05 02:00:41.233' AS DateTime))
+GO
+INSERT [dbo].[DocumentCategory] ([Id], [Name], [Description], [CreatedDate], [ModifiedDate]) VALUES (2, N'เอกสารทั่วไป', N'เอกสารที่เกี่ยวข้องกับโครงการ รายงาน คู่มือ/คู่มือการอบรม แผนยุทธศาสตร์ นโยบาย และมาตรการ', CAST(N'2017-09-05 02:06:16.207' AS DateTime), CAST(N'2017-09-05 02:06:16.207' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[DocumentCategory] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Logger] ON 
+
+GO
+INSERT [dbo].[Logger] ([ID], [LogMessage], [LogLevel], [ModifiedDate]) VALUES (1, N'2017-09-05 00:14:39.899 [TRACE] Log TRACE message from Integration Tests', N'TRACE', CAST(N'2017-09-05 00:14:39.937' AS DateTime))
+GO
+INSERT [dbo].[Logger] ([ID], [LogMessage], [LogLevel], [ModifiedDate]) VALUES (2, N'2017-09-05 00:14:39.946 [INFO] Log INFO message from Integration Tests', N'INFO', CAST(N'2017-09-05 00:14:39.943' AS DateTime))
+GO
+INSERT [dbo].[Logger] ([ID], [LogMessage], [LogLevel], [ModifiedDate]) VALUES (3, N'2017-09-05 00:14:39.947 [DEBUG] Log DEBUG message from Integration Tests', N'DEBUG', CAST(N'2017-09-05 00:14:39.947' AS DateTime))
+GO
+INSERT [dbo].[Logger] ([ID], [LogMessage], [LogLevel], [ModifiedDate]) VALUES (4, N'2017-09-05 00:14:39.948 [WARNING] Log WARNING message from Integration Tests', N'WARNING', CAST(N'2017-09-05 00:14:39.947' AS DateTime))
+GO
+INSERT [dbo].[Logger] ([ID], [LogMessage], [LogLevel], [ModifiedDate]) VALUES (5, N'2017-09-05 00:14:39.962 [ERROR] Log ERROR message from Integration Tests', N'ERROR', CAST(N'2017-09-05 00:14:39.960' AS DateTime))
+GO
+INSERT [dbo].[Logger] ([ID], [LogMessage], [LogLevel], [ModifiedDate]) VALUES (6, N'2017-09-05 00:14:39.963 [FATAL] Log FATAL message from Integration Tests', N'FATAL', CAST(N'2017-09-05 00:14:39.963' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Logger] OFF
+GO

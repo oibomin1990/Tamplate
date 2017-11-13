@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ระบบXXXXXXXXXXXXXXXXXX</title>
+
+    <!-- text fonts -->
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/jquery-ui.custom.min.css" />
+    <link rel="stylesheet" href="~/Content/fonts.googleapis.com.css" />
+    <link rel="stylesheet" href="~/Content/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="~/Content/ace-skins.min.css" />
+    <link rel="stylesheet" href="~/Content/ace-rtl.min.css" />
+    <link rel="stylesheet" href="~/Content/chosen.min.css" />
+    <link rel="stylesheet" href="~/Content/site.css" />
+
+
+
+
+</head>
+<body class="login-layout">
+    @RenderBody()
+    @*<hr />*@
+    <br />
+    <footer>
+        <p style="text-align:center;" class="blue">
+            &copy; @DateTime.Now.Year - Powered by Center for Information Technology Services
+            Mae Fah Luang University
+        </p>
+        <p style="text-align:center;" class="blue">
+            &copy; @DateTime.Now.Year - จัดทำโดย ศูนย์บริการเทคโนโลยีสารสนเทศ มหาวิทยาลัยแม่ฟ้าหลวง
+        </p>
+    </footer>
+
+    <script src="~/scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    <script src="~/scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/scripts/ace-elements.min.js"></script>
+    <script src="~/scripts/ace.min.js"></script>
+    <script scr="~/Scripts/bootbox.js"></script>
+
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='~/Scripts/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+
+    <!-- inline scripts related to this page -->
+    <script type="text/javascript">
+			jQuery(function($) {
+			 $(document).on('click', '.toolbar a[data-target]', function(e) {
+				e.preventDefault();
+				var target = $(this).data('target');
+				$('.widget-box.visible').removeClass('visible');//hide others
+				$(target).addClass('visible');//show target
+			 });
+			});
+
+
+
+			//you don't need this, just used for changing background
+			jQuery(function($) {
+			 $('#btn-login-dark').on('click', function(e) {
+				$('body').attr('class', 'login-layout');
+				$('#id-text2').attr('class', 'white');
+				$('#id-company-text').attr('class', 'blue');
+
+				e.preventDefault();
+			 });
+			 $('#btn-login-light').on('click', function(e) {
+				$('body').attr('class', 'login-layout light-login');
+				$('#id-text2').attr('class', 'grey');
+				$('#id-company-text').attr('class', 'blue');
+
+				e.preventDefault();
+			 });
+			 $('#btn-login-blur').on('click', function(e) {
+				$('body').attr('class', 'login-layout blur-login');
+				$('#id-text2').attr('class', 'white');
+				$('#id-company-text').attr('class', 'light-blue');
+
+				e.preventDefault();
+			 });
+
+			});
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
